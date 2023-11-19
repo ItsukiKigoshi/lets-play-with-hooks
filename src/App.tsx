@@ -1,23 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import "./App.css";
 
 function App() {
+  const charms: string[] = ["大吉", "中吉", "小吉", "末吉", "もち吉", "凶"];
+  const [charm, setCharm] = useState("Fortune");
+  const handleClick = () => {
+    const randomNumber = Math.floor(Math.random() * charms.length);
+    const newCharm = charms[randomNumber];
+    setCharm(newCharm);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Let's play with Hooks!</p>
+        <h1>{charm}</h1>
+        <button onClick={handleClick}>I'm Feeling Lucky</button>
       </header>
     </div>
   );
